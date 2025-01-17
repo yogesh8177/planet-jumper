@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=4 uid="uid://cwl0270jrsyvw"]
+
+[ext_resource type="Script" path="res://scenes/world_2/scripts/ladder.gd" id="1_0o58u"]
+[ext_resource type="Texture2D" uid="uid://d2lbex3qouq7x" path="res://assets/objects/staticObjects_.png" id="1_h77sk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agv2d"]
+texture = ExtResource("1_h77sk")
+2:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6ef5q"]
+sources/0 = SubResource("TileSetAtlasSource_agv2d")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1e5l"]
+size = Vector2(17, 155)
+
+[node name="Ladder" type="Area2D" groups=["Ladder"]]
+script = ExtResource("1_0o58u")
+
+[node name="LadderLayer" type="TileMapLayer" parent="." groups=["Ladder"]]
+tile_map_data = PackedByteArray("AAADAAAAAAACAAQAAAADAAEAAAACAAQAAAADAAMAAAACAAQAAAADAAIAAAACAAQAAAADAAQAAAACAAQAAAADAAUAAAACAAQAAAADAAYAAAACAAQAAAADAAcAAAACAAQAAAADAAgAAAACAAQAAAADAAkAAAACAAQAAAA=")
+tile_set = SubResource("TileSet_6ef5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(56.5, 79.5)
+shape = SubResource("RectangleShape2D_y1e5l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

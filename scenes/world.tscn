@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dx0glvjb66rym"]
+
+[ext_resource type="PackedScene" uid="uid://b44qhdhjy1slx" path="res://scenes/player.tscn" id="1_gob4b"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_kgm3y"]
+[ext_resource type="PackedScene" uid="uid://blsg6cflxkdpv" path="res://scenes/platforms.tscn" id="2_rcv8n"]
+[ext_resource type="PackedScene" uid="uid://c5d3pbwmxxo86" path="res://scenes/rocks.tscn" id="3_d7w04"]
+[ext_resource type="PackedScene" uid="uid://ddo3q04uo7dnl" path="res://scenes/keys.tscn" id="4_4m38t"]
+[ext_resource type="PackedScene" uid="uid://er6vjuoa0r0" path="res://scenes/rocks_container.tscn" id="6_i72js"]
+[ext_resource type="PackedScene" uid="uid://bpq6gif6qyx5f" path="res://scenes/level_complete_tile.tscn" id="7_ksr77"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_kgm3y")
+
+[node name="Player" parent="." instance=ExtResource("1_gob4b")]
+position = Vector2(-386, -84)
+
+[node name="Platforms" parent="." instance=ExtResource("2_rcv8n")]
+position = Vector2(273, 397)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("3_d7w04")]
+position = Vector2(296, 269)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("3_d7w04")]
+position = Vector2(662, 30)
+
+[node name="RigidBody2D4" parent="." instance=ExtResource("3_d7w04")]
+position = Vector2(905, 183)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("3_d7w04")]
+position = Vector2(-14, 270)
+
+[node name="keys" parent="." instance=ExtResource("4_4m38t")]
+position = Vector2(1089, 151)
+
+[node name="keys3" parent="." instance=ExtResource("4_4m38t")]
+position = Vector2(1293, 145)
+
+[node name="RocksContainer" parent="." instance=ExtResource("6_i72js")]
+position = Vector2(546, 461)
+collision_layer = 3
+collision_mask = 3
+
+[node name="LevelCompleteTile" parent="." instance=ExtResource("7_ksr77")]
+position = Vector2(1070, -178)
+
+[connection signal="can_collect_keys" from="." to="Player" method="_on_world_can_collect_keys" flags=6]
+[connection signal="level_completed" from="." to="Player" method="_on_world_level_completed"]
+[connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]
+[connection signal="body_entered" from="RocksContainer" to="." method="_on_rocks_container_body_entered"]
+[connection signal="area_entered" from="LevelCompleteTile" to="." method="_on_level_complete_tile_area_entered"]
+[connection signal="body_entered" from="LevelCompleteTile" to="." method="_on_level_complete_tile_body_entered"]

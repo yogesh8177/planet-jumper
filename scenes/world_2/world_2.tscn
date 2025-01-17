@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmrvf4k4q6p8o"]
+
+[ext_resource type="PackedScene" uid="uid://rn725udrg6bb" path="res://scenes/world_2/world_2_platforms.tscn" id="1_addhk"]
+[ext_resource type="Script" path="res://scenes/world_2/scripts/world_2.gd" id="1_unxfi"]
+[ext_resource type="PackedScene" uid="uid://b44qhdhjy1slx" path="res://scenes/player.tscn" id="2_trjxe"]
+[ext_resource type="PackedScene" uid="uid://ddo3q04uo7dnl" path="res://scenes/keys.tscn" id="3_kgxfe"]
+[ext_resource type="PackedScene" uid="uid://c5d3pbwmxxo86" path="res://scenes/rocks.tscn" id="4_s3bkw"]
+[ext_resource type="PackedScene" uid="uid://bpq6gif6qyx5f" path="res://scenes/level_complete_tile.tscn" id="5_5oir4"]
+[ext_resource type="PackedScene" uid="uid://er6vjuoa0r0" path="res://scenes/rocks_container.tscn" id="6_vuu08"]
+
+[node name="world_2" type="Node2D"]
+script = ExtResource("1_unxfi")
+
+[node name="world_2_platforms" parent="." instance=ExtResource("1_addhk")]
+position = Vector2(64, 634)
+
+[node name="Player" parent="." instance=ExtResource("2_trjxe")]
+position = Vector2(-354, 44)
+
+[node name="keys" parent="." instance=ExtResource("3_kgxfe")]
+position = Vector2(1226, 500)
+
+[node name="keys3" parent="." instance=ExtResource("3_kgxfe")]
+position = Vector2(894, 160)
+
+[node name="keys2" parent="." instance=ExtResource("3_kgxfe")]
+position = Vector2(490, 870)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("4_s3bkw")]
+position = Vector2(184, 356)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("4_s3bkw")]
+position = Vector2(989, 499)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("4_s3bkw")]
+position = Vector2(31, 527)
+
+[node name="RocksContainer" parent="." instance=ExtResource("6_vuu08")]
+position = Vector2(481, 650)
+collision_layer = 3
+collision_mask = 3
+
+[node name="LevelCompleteTile" parent="." instance=ExtResource("5_5oir4")]
+position = Vector2(907, 490)
+
+[connection signal="can_collect_keys" from="." to="Player" method="_on_world_2_can_collect_keys" flags=6]
+[connection signal="level_completed" from="." to="." method="_on_level_completed" flags=6]
+[connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]
+[connection signal="body_entered" from="RocksContainer" to="." method="_on_rocks_container_body_entered"]
+[connection signal="body_entered" from="LevelCompleteTile" to="." method="_on_level_complete_tile_body_entered"]

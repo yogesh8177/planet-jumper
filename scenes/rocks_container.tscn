@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://er6vjuoa0r0"]
+
+[ext_resource type="Texture2D" uid="uid://g26c2awf78yx" path="res://assets/objects/beehives_.png" id="1_qjgoe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yog4h"]
+size = Vector2(99, 30)
+
+[sub_resource type="Gradient" id="Gradient_vk0n2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0pf0e"]
+gradient = SubResource("Gradient_vk0n2")
+fill = 1
+fill_from = Vector2(0.5, 0.509174)
+
+[node name="RocksContainer" type="Area2D"]
+position = Vector2(36, 84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15.5, 65)
+shape = SubResource("RectangleShape2D_yog4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 26)
+scale = Vector2(1.3375, 1.4)
+texture = ExtResource("1_qjgoe")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16, 1.5)
+scale = Vector2(1.65625, 1.48438)
+energy = 1.53
+texture = SubResource("GradientTexture2D_0pf0e")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddo3q04uo7dnl"]
+
+[ext_resource type="Texture2D" uid="uid://bqrc6gr4jet74" path="res://assets/objects/items_.png" id="1_12351"]
+[ext_resource type="Script" path="res://scripts/keys.gd" id="1_vjwad"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u2wu7"]
+texture = ExtResource("1_12351")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b1u0t"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_u2wu7")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjwfu"]
+size = Vector2(8, 21)
+
+[sub_resource type="Gradient" id="Gradient_dbg1p"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_to3yq"]
+gradient = SubResource("Gradient_dbg1p")
+fill = 1
+
+[node name="keys" type="RigidBody2D" groups=["Keys"]]
+position = Vector2(352, 248)
+script = ExtResource("1_vjwad")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Keys"]]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0)
+tile_set = SubResource("TileSet_b1u0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Keys"]]
+position = Vector2(16, 15.5)
+shape = SubResource("RectangleShape2D_kjwfu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16.5, 15.53)
+scale = Vector2(0.61744, 0.616683)
+color = Color(0.938751, 0.975292, 0.887619, 1)
+texture = SubResource("GradientTexture2D_to3yq")
+texture_scale = 1.24

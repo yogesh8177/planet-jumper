@@ -11,6 +11,7 @@ var can_collect_keys: bool = false
 @export var can_take_damage: bool = false
 @export var is_alive: bool = true
 @export var is_hurting: bool = false
+@export var health = 100
 
 const PUSH_FORCE = 10.0
 const MIN_PUSH_FORCE = 5.0
@@ -29,12 +30,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	handle_player_movement(delta)
-	handle_player_gravity(delta)
-	handle_player_jump()
-	move_and_slide()
-	handle_collision()
-	handle_movement_animation(horizontal_direction)
+	if (is_alive):
+		handle_player_movement(delta)
+		handle_player_gravity(delta)
+		handle_player_jump()
+		move_and_slide()
+		handle_collision()
+		handle_movement_animation(horizontal_direction)
 	
 func handle_movement_animation(direction):
 	if (is_alive):
@@ -50,6 +52,8 @@ func handle_movement_animation(direction):
 				animated_sprite.play("climb")
 			else:
 				animated_sprite.play("walk")
+	else:
+		animated_sprite.play("death")
 	
 # handle left right horiznotal animation flip
 func handle_animation_flip(direction):
@@ -124,3 +128,12 @@ func _on_world_2_can_collect_keys() -> void:
 
 func handle_enemy_collision(collision):
 	print(can_take_damage, is_hurting)
+	take_damage(1)
+
+func take_damage(damage: int):
+	print(health)
+	health -= damage
+	if (health <= 0):
+		health = 0
+		is_alive = false
+	

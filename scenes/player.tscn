@@ -534,7 +534,7 @@ script = ExtResource("2_ulequ")
 position = Vector2(574, 422)
 scale = Vector2(1.0625, 1.0625)
 sprite_frames = SubResource("SpriteFrames_njt15")
-animation = &"climb"
+animation = &"death"
 
 [connection signal="camera_shake" from="." to="Camera2D" method="_on_player_camera_shake"]
 [connection signal="key_collected" from="." to="." method="_on_key_collected"]

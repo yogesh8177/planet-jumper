@@ -26,6 +26,15 @@ position = Vector2(64, 634)
 
 [node name="Player" parent="." instance=ExtResource("2_trjxe")]
 position = Vector2(-354, 44)
+horizontal_speed = 100
+vertical_speed = 50
+gravity = 900
+jumpForce = 400
+is_on_ladder = false
+can_take_damage = false
+is_alive = true
+is_hurting = false
+health = 100
 
 [node name="keys" parent="." instance=ExtResource("3_kgxfe")]
 position = Vector2(1226, 500)

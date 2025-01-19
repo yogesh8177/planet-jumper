@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmrvf4k4q6p8o"]
+[gd_scene load_steps=9 format=3 uid="uid://dmrvf4k4q6p8o"]
 
 [ext_resource type="PackedScene" uid="uid://rn725udrg6bb" path="res://scenes/world_2/world_2_platforms.tscn" id="1_addhk"]
 [ext_resource type="Script" path="res://scenes/world_2/scripts/world_2.gd" id="1_unxfi"]
@@ -7,9 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://c5d3pbwmxxo86" path="res://scenes/rocks.tscn" id="4_s3bkw"]
 [ext_resource type="PackedScene" uid="uid://bpq6gif6qyx5f" path="res://scenes/level_complete_tile.tscn" id="5_5oir4"]
 [ext_resource type="PackedScene" uid="uid://er6vjuoa0r0" path="res://scenes/rocks_container.tscn" id="6_vuu08"]
+[ext_resource type="PackedScene" uid="uid://b35ls0vjqx87c" path="res://scenes/enemies/enemy.tscn" id="8_66ipi"]
 
 [node name="world_2" type="Node2D"]
 script = ExtResource("1_unxfi")
+
+[node name="Enemy" parent="." groups=["Enemy"] instance=ExtResource("8_66ipi")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Enemy2" parent="." groups=["Enemy"] instance=ExtResource("8_66ipi")]
+position = Vector2(270, -77)
+collision_layer = 2
+collision_mask = 2
 
 [node name="world_2_platforms" parent="." instance=ExtResource("1_addhk")]
 position = Vector2(64, 634)

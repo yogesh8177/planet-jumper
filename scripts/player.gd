@@ -8,6 +8,9 @@ extends CharacterBody2D
 var horizontal_direction = 0
 var can_collect_keys: bool = false
 @export var is_on_ladder: bool = false
+@export var can_take_damage: bool = false
+@export var is_alive: bool = true
+@export var is_hurting: bool = false
 
 const PUSH_FORCE = 10.0
 const MIN_PUSH_FORCE = 5.0
@@ -34,17 +37,19 @@ func _physics_process(delta: float) -> void:
 	handle_movement_animation(horizontal_direction)
 	
 func handle_movement_animation(direction):
-	handle_animation_flip(direction)
-	if (!is_on_floor() && !is_on_ladder):
-		animated_sprite.play("jump")
-	else:
-		if (direction == 0 && !is_on_ladder):
-			animated_sprite.play("idle")
-		elif (direction == 0 && is_on_ladder):
-			animated_sprite.play("climb")
+	if (is_alive):
+		handle_animation_flip(direction)
+		if (!is_on_floor() && !is_on_ladder):
+			animated_sprite.play("jump")
+		elif (is_hurting):
+			animated_sprite.play("hurt")
 		else:
-			animated_sprite.play("walk")
-	pass
+			if (direction == 0 && !is_on_ladder):
+				animated_sprite.play("idle")
+			elif (direction == 0 && is_on_ladder):
+				animated_sprite.play("climb")
+			else:
+				animated_sprite.play("walk")
 	
 # handle left right horiznotal animation flip
 func handle_animation_flip(direction):
@@ -87,6 +92,9 @@ func handle_collision():
 			handle_keys_collision(collision)
 		elif (collider.is_in_group("LevelDoor")):
 			handle_door_collision(collision)
+		elif  (collider.is_in_group("Enemy")):
+			handle_enemy_collision(collision)
+			
 		
 		
 func rocks_collision(collision):
@@ -113,3 +121,6 @@ func _on_world_can_collect_keys() -> void:
 
 func _on_world_2_can_collect_keys() -> void:
 	can_collect_keys = true
+
+func handle_enemy_collision(collision):
+	print(can_take_damage, is_hurting)

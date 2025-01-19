@@ -30,6 +30,7 @@ Keys=""
 LevelDoor=""
 LevelCompleteTile=""
 Ladder=""
+Enemy=""
 
 [rendering]
 

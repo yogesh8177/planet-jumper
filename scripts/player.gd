@@ -131,9 +131,9 @@ func handle_enemy_collision(collision):
 	take_damage(1)
 
 func take_damage(damage: int):
-	print(health)
-	health -= damage
-	if (health <= 0):
-		health = 0
-		is_alive = false
+	if (can_take_damage):
+		health -= damage
+		if (health <= 0):
+			health = 0
+			is_alive = false
 	

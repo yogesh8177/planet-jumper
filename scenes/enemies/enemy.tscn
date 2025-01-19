@@ -121,7 +121,7 @@ position = Vector2(483, 220.291)
 scale = Vector2(1.18232, 1.35611)
 sprite_frames = SubResource("SpriteFrames_kknko")
 animation = &"idle"
-frame_progress = 0.331138
+frame_progress = 0.18573
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

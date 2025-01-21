@@ -8,7 +8,7 @@ extends CharacterBody2D
 var horizontal_direction = 0
 var can_collect_keys: bool = false
 @export var is_on_ladder: bool = false
-@export var can_take_damage: bool = false
+@export var can_take_damage: bool = true
 @export var is_alive: bool = true
 @export var is_hurting: bool = false
 @export var health = 100
@@ -136,4 +136,8 @@ func take_damage(damage: int):
 		if (health <= 0):
 			health = 0
 			is_alive = false
+			game_over_screen()
 	
+func game_over_screen():
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")

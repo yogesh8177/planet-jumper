@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://xqdu0yq8gkxt"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_btdrq"]
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_btdrq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 456.0
+offset_top = 296.0
+offset_right = 1551.0
+offset_bottom = 392.0
+rotation = -0.000855495
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Main menu"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -16,8 +16,13 @@ script = ExtResource("1_unxfi")
 collision_layer = 2
 collision_mask = 2
 
+[node name="Enemy3" parent="." groups=["Enemy"] instance=ExtResource("8_66ipi")]
+position = Vector2(97, 660)
+collision_layer = 2
+collision_mask = 2
+
 [node name="Enemy2" parent="." groups=["Enemy"] instance=ExtResource("8_66ipi")]
-position = Vector2(270, -77)
+position = Vector2(275, -89)
 collision_layer = 2
 collision_mask = 2
 

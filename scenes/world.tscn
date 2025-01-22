@@ -11,9 +11,6 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_kgm3y")
 
-[node name="Player" parent="." instance=ExtResource("1_gob4b")]
-position = Vector2(-386, -84)
-
 [node name="Platforms" parent="." instance=ExtResource("2_rcv8n")]
 position = Vector2(273, 397)
 
@@ -43,9 +40,12 @@ collision_mask = 3
 [node name="LevelCompleteTile" parent="." instance=ExtResource("7_ksr77")]
 position = Vector2(1070, -178)
 
+[node name="Player" parent="." instance=ExtResource("1_gob4b")]
+position = Vector2(-386, -84)
+
 [connection signal="can_collect_keys" from="." to="Player" method="_on_world_can_collect_keys" flags=6]
 [connection signal="level_completed" from="." to="Player" method="_on_world_level_completed"]
-[connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]
 [connection signal="body_entered" from="RocksContainer" to="." method="_on_rocks_container_body_entered"]
 [connection signal="area_entered" from="LevelCompleteTile" to="." method="_on_level_complete_tile_area_entered"]
 [connection signal="body_entered" from="LevelCompleteTile" to="." method="_on_level_complete_tile_body_entered"]
+[connection signal="key_collected" from="Player" to="." method="_on_player_key_collected"]

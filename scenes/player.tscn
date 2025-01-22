@@ -536,5 +536,31 @@ scale = Vector2(1.0625, 1.0625)
 sprite_frames = SubResource("SpriteFrames_njt15")
 animation = &"death"
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 34.0
+offset_top = 201.0
+offset_right = 159.0
+offset_bottom = 228.0
+
+[node name="CollectablesContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 894.0
+offset_top = 187.0
+offset_right = 1069.0
+offset_bottom = 224.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="RocksLabel" type="Label" parent="CollectablesContainer"]
+layout_mode = 2
+text = "Rocks: "
+
+[node name="KeysLabel" type="Label" parent="CollectablesContainer"]
+layout_mode = 2
+text = "Keys: "
+
 [connection signal="camera_shake" from="." to="Camera2D" method="_on_player_camera_shake"]
 [connection signal="key_collected" from="." to="." method="_on_key_collected"]

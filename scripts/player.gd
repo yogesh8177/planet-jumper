@@ -12,6 +12,9 @@ var can_collect_keys: bool = false
 @export var is_alive: bool = true
 @export var is_hurting: bool = false
 @export var health = 100
+@onready var health_bar = $HealthBar
+@onready var rocks_label = $CollectablesContainer/RocksLabel
+@onready var keys_label = $CollectablesContainer/KeysLabel
 
 const PUSH_FORCE = 10.0
 const MIN_PUSH_FORCE = 5.0
@@ -22,8 +25,9 @@ signal key_collected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health_bar.max_value = health
+	update_health_bar()
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -133,6 +137,7 @@ func handle_enemy_collision(collision):
 func take_damage(damage: int):
 	if (can_take_damage):
 		health -= damage
+		update_health_bar()
 		if (health <= 0):
 			health = 0
 			is_alive = false
@@ -141,3 +146,12 @@ func take_damage(damage: int):
 func game_over_screen():
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+
+func update_health_bar():
+	health_bar.value = health
+
+func update_rocks_label(pending_rocks: int):
+	rocks_label.text = "Rocks: %s" % pending_rocks
+	
+func update_keys_label(pending_keys: int):
+	keys_label.text = "Keys: %s" % pending_keys

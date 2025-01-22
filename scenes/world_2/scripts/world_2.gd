@@ -11,6 +11,7 @@ var is_door_unlocked: bool = false;
 signal can_collect_keys
 signal level_completed
 
+@onready var player = $Player
 @onready var sliding_platform = $world_2_platforms/SlidingGroundLayer/AnimationPlayer
 
 
@@ -20,6 +21,8 @@ func _ready() -> void:
 	for key in keys:
 		key.visible = false
 	sliding_platform.play("slide_platform")
+	player.update_rocks_label(total_rocks_to_reveal_keys)
+	player.update_keys_label(TOTAL_KEYS_TO_UNLOCK)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,6 +33,7 @@ func _on_rocks_container_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Rocks")):
 		total_rocks_collected += 1
 		print("rocks collected: ", total_rocks_collected)
+		player.update_rocks_label(total_rocks_to_reveal_keys - total_rocks_collected)
 	if (total_rocks_collected >= total_rocks_to_reveal_keys):
 		if(!keys_revealed):
 			reveal_keys()
@@ -46,6 +50,7 @@ func reveal_keys():
 func _on_player_key_collected() -> void:
 	if (keys_revealed):
 		total_keys_collected += 1
+		player.update_keys_label(TOTAL_KEYS_TO_UNLOCK - total_keys_collected)
 	if (total_keys_collected >= TOTAL_KEYS_TO_UNLOCK && !is_door_unlocked):
 		is_door_unlocked = true
 		print("door unlocked")
@@ -54,4 +59,4 @@ func _on_player_key_collected() -> void:
 func _on_level_complete_tile_body_entered(body: Node2D) -> void:
 	print(is_door_unlocked)
 	if (body.is_in_group("Player") && is_door_unlocked):
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

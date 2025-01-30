@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmrvf4k4q6p8o"]
+[gd_scene load_steps=10 format=3 uid="uid://dmrvf4k4q6p8o"]
 
 [ext_resource type="PackedScene" uid="uid://rn725udrg6bb" path="res://scenes/world_2/world_2_platforms.tscn" id="1_addhk"]
 [ext_resource type="Script" path="res://scenes/world_2/scripts/world_2.gd" id="1_unxfi"]
+[ext_resource type="Texture2D" uid="uid://ctsnlo711p2s5" path="res://assets/game_background_2.png" id="2_jretq"]
 [ext_resource type="PackedScene" uid="uid://b44qhdhjy1slx" path="res://scenes/player.tscn" id="2_trjxe"]
 [ext_resource type="PackedScene" uid="uid://ddo3q04uo7dnl" path="res://scenes/keys.tscn" id="3_kgxfe"]
 [ext_resource type="PackedScene" uid="uid://c5d3pbwmxxo86" path="res://scenes/rocks.tscn" id="4_s3bkw"]
@@ -11,6 +12,11 @@
 
 [node name="world_2" type="Node2D"]
 script = ExtResource("1_unxfi")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(616.5, 378)
+scale = Vector2(2.4834, 1.83008)
+texture = ExtResource("2_jretq")
 
 [node name="Enemy" parent="." groups=["Enemy"] instance=ExtResource("8_66ipi")]
 collision_layer = 2

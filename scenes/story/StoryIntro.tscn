@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2e117fqar1nk"]
+
+[ext_resource type="Script" path="res://scripts/story/story_intro.gd" id="1_ox0no"]
+[ext_resource type="Texture2D" uid="uid://cie7ir7xh8s8l" path="res://assets/story_1.png" id="1_vsquy"]
+
+[node name="StoryIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ox0no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(961.5, 347)
+scale = Vector2(1.86816, 0.712891)
+texture = ExtResource("1_vsquy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -72.0
+offset_right = 223.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -68.5
+offset_right = 121.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "ACT I"

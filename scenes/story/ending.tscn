@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://btxtvncr342d"]
+
+[ext_resource type="Script" path="res://scripts/story/ending.gd" id="1_k57cd"]
+[ext_resource type="Texture2D" uid="uid://bp8mgb6vi8cq8" path="res://assets/ending_1_1.png" id="1_xphwc"]
+[ext_resource type="Texture2D" uid="uid://csukna0diua72" path="res://assets/ending_1_2.png" id="2_v1osc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kybai"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_xphwc")
+}, {
+"duration": 5.0,
+"texture": ExtResource("2_v1osc")
+}],
+"loop": false,
+"name": &"story",
+"speed": 1.0
+}]
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k57cd")
+story_sprite_duration = 15
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(970, 354)
+scale = Vector2(1.87109, 0.746094)
+sprite_frames = SubResource("SpriteFrames_kybai")
+animation = &"story"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 424.0
+offset_top = 182.0
+offset_right = 1654.0
+offset_bottom = 416.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 66.0
+offset_right = 1032.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 70
+text = "ACT II to be continued..."

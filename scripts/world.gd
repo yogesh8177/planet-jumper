@@ -9,7 +9,7 @@ var TOTAL_KEYS_TO_UNLOCK: int = 2
 var is_door_unlocked: bool = false;
 @onready var player = $Player
 
-var next_world = "res://scenes/world_2/world_2.tscn"
+var next_world = "res://scenes/story/story_2_1.tscn"
 
 signal can_collect_keys
 signal level_completed

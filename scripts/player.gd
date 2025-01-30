@@ -12,9 +12,9 @@ var can_collect_keys: bool = false
 @export var is_alive: bool = true
 @export var is_hurting: bool = false
 @export var health = 100
-@onready var health_bar = $HealthBar
-@onready var rocks_label = $CollectablesContainer/RocksLabel
-@onready var keys_label = $CollectablesContainer/KeysLabel
+@onready var health_bar = $Camera2D/HealthBar
+@onready var rocks_label = $Camera2D/CollectablesContainer/RocksLabel
+@onready var keys_label = $Camera2D/CollectablesContainer/KeysLabel
 
 const PUSH_FORCE = 10.0
 const MIN_PUSH_FORCE = 5.0

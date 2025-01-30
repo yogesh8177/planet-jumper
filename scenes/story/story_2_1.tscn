@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpch6up4yqv1"]
+
+[ext_resource type="Script" path="res://scenes/story/story_2_1.gd" id="1_be7de"]
+[ext_resource type="Texture2D" uid="uid://dt2t458xdcl7j" path="res://assets/story_2_2.png" id="1_upcrr"]
+[ext_resource type="Texture2D" uid="uid://lp33iak5eyrb" path="res://assets/story_2_1.png" id="2_2w82g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68jdj"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_upcrr")
+}, {
+"duration": 5.0,
+"texture": ExtResource("2_2w82g")
+}],
+"loop": false,
+"name": &"story",
+"speed": 1.0
+}]
+
+[node name="Story_2_1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_be7de")
+story_sprite_duration = 12
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(961, 338)
+scale = Vector2(1.88086, 0.769531)
+sprite_frames = SubResource("SpriteFrames_68jdj")
+animation = &"story"
+frame = 1
+frame_progress = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = -56.0
+offset_right = 398.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.5
+offset_top = -48.0
+offset_right = 381.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+text = "Mushrooms awaken...."

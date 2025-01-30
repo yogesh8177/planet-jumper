@@ -59,4 +59,4 @@ func _on_player_key_collected() -> void:
 func _on_level_complete_tile_body_entered(body: Node2D) -> void:
 	print(is_door_unlocked)
 	if (body.is_in_group("Player") && is_door_unlocked):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/story/ending.tscn")

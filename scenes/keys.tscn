@@ -26,10 +26,13 @@ sources/0 = SubResource("TileSetAtlasSource_u2wu7")
 size = Vector2(8, 21)
 
 [sub_resource type="Gradient" id="Gradient_dbg1p"]
+offsets = PackedFloat32Array(0.0292208, 0.785714)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_to3yq"]
 gradient = SubResource("Gradient_dbg1p")
 fill = 1
+fill_from = Vector2(0.488532, 0.509174)
 
 [node name="keys" type="RigidBody2D" groups=["Keys"]]
 position = Vector2(352, 248)

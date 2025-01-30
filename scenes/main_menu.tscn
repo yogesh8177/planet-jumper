@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c20avwg360t7b"]
+[gd_scene load_steps=6 format=3 uid="uid://c20avwg360t7b"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_2on2m"]
+[ext_resource type="Texture2D" uid="uid://dj57b8uxhixx3" path="res://assets/intro.png" id="2_sr7pa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8j0e"]
 bg_color = Color(0, 0.287839, 0.343367, 1)
@@ -35,6 +36,11 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2on2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(972, 380.5)
+scale = Vector2(1.88281, 0.717773)
+texture = ExtResource("2_sr7pa")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -83,6 +89,7 @@ offset_top = 93.0
 offset_right = 192.0
 offset_bottom = 170.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0705882, 0.0235294, 0, 1)
 theme_override_font_sizes/font_size = 56
 text = "Planet Jumper"
 

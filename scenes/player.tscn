@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b44qhdhjy1slx"]
+[gd_scene load_steps=79 format=3 uid="uid://b44qhdhjy1slx"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_mgymn"]
 [ext_resource type="Texture2D" uid="uid://daak771o5sakm" path="res://assets/2 Owlet_Monster/Owlet_Monster_Attack1_4.png" id="2_ejos7"]
@@ -16,6 +16,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5cvr"]
 size = Vector2(17, 27)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci6xg"]
+bg_color = Color(0.0196078, 0.972549, 0.0313726, 0.447059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1j3rn"]
 atlas = ExtResource("2_ejos7")
@@ -530,37 +537,38 @@ position = Vector2(548, 385)
 zoom = Vector2(1.8, 1.8)
 script = ExtResource("2_ulequ")
 
+[node name="CollectablesContainer" type="HBoxContainer" parent="Camera2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 378.0
+offset_top = -193.0
+offset_right = 527.0
+offset_bottom = -159.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="RocksLabel" type="Label" parent="Camera2D/CollectablesContainer"]
+layout_mode = 2
+text = "Rocks: "
+
+[node name="KeysLabel" type="Label" parent="Camera2D/CollectablesContainer"]
+layout_mode = 2
+text = "Keys: "
+
+[node name="HealthBar" type="ProgressBar" parent="Camera2D"]
+offset_left = -525.0
+offset_top = -192.0
+offset_right = -400.0
+offset_bottom = -165.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ci6xg")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 position = Vector2(574, 422)
 scale = Vector2(1.0625, 1.0625)
 sprite_frames = SubResource("SpriteFrames_njt15")
 animation = &"death"
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 34.0
-offset_top = 201.0
-offset_right = 159.0
-offset_bottom = 228.0
-
-[node name="CollectablesContainer" type="HBoxContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 894.0
-offset_top = 187.0
-offset_right = 1069.0
-offset_bottom = 224.0
-grow_horizontal = 0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="RocksLabel" type="Label" parent="CollectablesContainer"]
-layout_mode = 2
-text = "Rocks: "
-
-[node name="KeysLabel" type="Label" parent="CollectablesContainer"]
-layout_mode = 2
-text = "Keys: "
 
 [connection signal="camera_shake" from="." to="Camera2D" method="_on_player_camera_shake"]
 [connection signal="key_collected" from="." to="." method="_on_key_collected"]

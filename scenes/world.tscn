@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dx0glvjb66rym"]
+[gd_scene load_steps=9 format=3 uid="uid://dx0glvjb66rym"]
 
 [ext_resource type="PackedScene" uid="uid://b44qhdhjy1slx" path="res://scenes/player.tscn" id="1_gob4b"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_kgm3y"]
+[ext_resource type="Texture2D" uid="uid://tph875d8aoma" path="res://assets/game_background_1.png" id="2_0nkq3"]
 [ext_resource type="PackedScene" uid="uid://blsg6cflxkdpv" path="res://scenes/platforms.tscn" id="2_rcv8n"]
 [ext_resource type="PackedScene" uid="uid://c5d3pbwmxxo86" path="res://scenes/rocks.tscn" id="3_d7w04"]
 [ext_resource type="PackedScene" uid="uid://ddo3q04uo7dnl" path="res://scenes/keys.tscn" id="4_4m38t"]
@@ -10,6 +11,11 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_kgm3y")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(569, 93)
+scale = Vector2(2.31445, 1.26172)
+texture = ExtResource("2_0nkq3")
 
 [node name="Platforms" parent="." instance=ExtResource("2_rcv8n")]
 position = Vector2(273, 397)

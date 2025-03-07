@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://m8wujpgy7kfk"]
+
+[ext_resource type="PackedScene" uid="uid://qc570xu5w26f" path="res://scenes/3D/player_3d.tscn" id="1_ht5gj"]
+[ext_resource type="PackedScene" uid="uid://m3i50ex2m56l" path="res://scenes/3D/platform.tscn" id="2_y3pfc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_re43m"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pua28"]
+sky_material = SubResource("ProceduralSkyMaterial_re43m")
+
+[sub_resource type="Environment" id="Environment_smpxu"]
+background_mode = 2
+sky = SubResource("Sky_pua28")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_53ovj"]
+size = Vector2(10, 10)
+
+[node name="World_3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_smpxu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_53ovj")
+
+[node name="Player3D" parent="." instance=ExtResource("1_ht5gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44451, 0.805166, -2.79849)
+
+[node name="Camera3D" type="Camera3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.297934, 1.5774, 3.74272)
+
+[node name="Platform" parent="." instance=ExtResource("2_y3pfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0378716, 0, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("2_y3pfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96148, 0, 0.0595498)
